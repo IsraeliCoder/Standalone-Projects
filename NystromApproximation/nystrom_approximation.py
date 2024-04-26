@@ -45,8 +45,8 @@ class NystromApproximation:
         self.m = m = len(E)
         self.k = k = len(F[0])
 
-        A = [[0.0 for _ in range(m)] for _ in range(m)]
-        B = [[0.0 for _ in range(k)] for _ in range(m)]
+        self.A = A = [[0.0 for _ in range(m)] for _ in range(m)]
+        self.B = B = [[0.0 for _ in range(k)] for _ in range(m)]
 
         self.__setA__(A)
         self.__setB__(B)
@@ -58,7 +58,7 @@ class NystromApproximation:
         result -= (1.0 / float(self.m)) * sum_matrix_vertical(self.E, j, self.m)
         result -= (1.0 / float(self.m)) * sum_matrix_horizontal(self.E, i, self.m)
 
-        result -= (1.0 / float(self.m ** 2)) * sum_matrix(self.E, self.m)
+        result += (1.0 / float(self.m ** 2)) * sum_matrix(self.E, self.m)
 
         return -0.5 * result
 
@@ -75,7 +75,7 @@ class NystromApproximation:
         result -= (1.0 / float(self.m)) * sum_matrix_vertical(self.F, j, self.m)
         result -= (1.0 / float(self.m)) * sum_matrix_horizontal(self.E, i, self.m)
 
-        result -= (1.0 / float(self.m ** 2)) * sum_matrix(self.E, self.m)
+        result += (1.0 / float(self.m ** 2)) * sum_matrix(self.E, self.m)
 
         return -0.5 * result
 

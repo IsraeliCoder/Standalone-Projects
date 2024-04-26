@@ -59,7 +59,7 @@ class Graph:
             next_neighbours = []
             distance += 1
 
-    def get_distance_matrix(self):
+    def get_distance_matrix(self) -> List[List[int]]:
 
         n = self.number_of_nodes
         distance_matrix = [[0 for _ in range(n)] for _ in range(n)]
